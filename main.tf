@@ -18,10 +18,6 @@ variable "ssh_key" {
   description = "The AWS Key Pair to use for SSH"
 }
 
-variable "alt_rdp_source_ip" {
-  description = "An additional IP address from which to RDP"
-}
-
 provider "aws" {
   region                  = var.aws_region
   profile                 = var.aws_profile
@@ -119,7 +115,6 @@ resource "aws_security_group_rule" "temp-sg-rdp" {
   cidr_blocks       = ["${chomp(data.http.myip.response_body)}/32"]
   security_group_id = aws_security_group.temp-sg.id
 }
-
 
 resource "aws_security_group_rule" "allow_all" {
   type              = "egress"
