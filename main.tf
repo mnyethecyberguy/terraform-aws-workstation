@@ -14,6 +14,10 @@ variable "aws_pem" {
   description = "The PEM file to use for SSH. This is outputted with the IP for convenience"
 }
 
+variable "ssh_key" {
+  description = "The AWS Key Pair to use for SSH"
+}
+
 provider "aws" {
   region                  = var.aws_region
   profile                 = var.aws_profile
@@ -119,4 +123,32 @@ resource "aws_security_group_rule" "allow_all" {
   protocol          = "-1"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.temp-sg.id
+}
+
+resource "aws_instance" "temp-workstation" {
+  ami                    = data.aws_ami.ubuntu.id
+  instance_type          = "t3a.xlarge"
+  key_name               = var.ssh_key
+  vpc_security_group_ids = [aws_security_group.temp-sg.id]
+  subnet_id              = aws_subnet.temp-subnet.id
+  user_data              = file("temp-workstation.sh")
+  tags = {
+    Name = "temp-workstation"
+  }
+}
+
+output "ssh_connection_string" {
+  value = "ssh -i ${var.aws_pem} ubuntu@${aws_instance.temp-workstation.public_ip}"
+}
+
+output "RDP_address" {
+  value = aws_instance.temp-workstation.public_ip
+}
+
+output "RDP_UserName" {
+  value = "shokz"
+}
+
+output "RDP_Password" {
+  value = "Changemenow"
 }
