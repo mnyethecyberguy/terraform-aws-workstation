@@ -39,11 +39,20 @@ terraform apply
 The cloud workstation can be accessed via either SSH or RDP. The necessary information will be an output when the script is complete.
 
 Sample Output:
+
 ```
 RDP_Password = "Changemenow"
 RDP_UserName = "clouduser"
 RDP_address = "<your-EC2-public-IP>"
 ssh_connection_string = "ssh -i ~/cloud_workstation.pem ubuntu@<your-EC2-public-IP>"
+```
+
+## Teardown
+
+To destroy the workstation and all the resources created in your AWS account run the following command from the repository directory:
+
+```
+terraform destroy
 ```
 
 ## Additional Notes
@@ -65,3 +74,9 @@ NOTICE: First Boot Setup Has Completed
 After that point it is ready for an Remote Desktop (RDP) Connection. Use an RDP client, such as Microsoft Terminal Services Client (MSTSC) to RDP to the IP address that is output by the Terraform script.
 
 **DON'T FORGET TO CHANGE THE RDP PASSWORD AFTER LOGON**
+
+## Customization
+
+This script is configured to deploy the Ubuntu instance as a `t3a.xlarge` instance.  This will cost $0.1504 per Hour according to the [EC2 On Demand Pricing Page](https://aws.amazon.com/ec2/pricing/on-demand/). If you want to change this, locate the `resource "aws_instance" "temp-workstation"` block in the `main.tf` file and update the `instance_type` argument to a [valid instance type](https://aws.amazon.com/ec2/instance-types/). 
+
+The default user created for RDP is named `clouduser` with a password of `Changemenow`.  You can find these settings in the `temp-workstation.sh` shell script, and an Output reference to them in the `main.tf` script.
