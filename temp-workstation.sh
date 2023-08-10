@@ -29,14 +29,14 @@ DEBIAN_FRONTEND=noninteractive /usr/bin/apt upgrade -y >> /tmp/first-boot.log 2>
 /usr/bin/apt-get install -y python >> /tmp/first-boot.log 2>&1
 /usr/bin/apt-get install -y python3-pip >> /tmp/first-boot.log 2>&1
 /bin/echo "***** Create New User *****" >> /tmp/first-boot.log
-/usr/sbin/useradd -m shokz >> /tmp/first-boot.log 2>&1
-/usr/sbin/usermod -aG sudo shokz
-/usr/bin/mkdir /home/shokz/Desktop >> /tmp/first-boot.log 2>&1
-/usr/bin/chown shokz:shokz /home/shokz/Desktop >> /tmp/first-boot.log 2>&1
-/usr/bin/ls -als /home/shokz/Desktop >> /tmp/first-boot.log 2>&1
-/bin/echo 'shokz:Changemenow' | /usr/sbin/chpasswd
+/usr/sbin/useradd -m clouduser >> /tmp/first-boot.log 2>&1
+/usr/sbin/usermod -aG sudo clouduser
+/usr/bin/mkdir /home/clouduser/Desktop >> /tmp/first-boot.log 2>&1
+/usr/bin/chown clouduser:clouduser /home/clouduser/Desktop >> /tmp/first-boot.log 2>&1
+/usr/bin/ls -als /home/clouduser/Desktop >> /tmp/first-boot.log 2>&1
+/bin/echo 'clouduser:Changemenow' | /usr/sbin/chpasswd
 /bin/echo "***** Create Firefox Launcher *****" >> /tmp/first-boot.log
-/usr/bin/cat << EOF > /home/shokz/Desktop/Firefox.desktop
+/usr/bin/cat << EOF > /home/clouduser/Desktop/Firefox.desktop
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.0
@@ -48,11 +48,11 @@ Name[C]=Firefox
 Exec=firefox
 Name=Firefox
 EOF
-/usr/bin/cat /home/shokz/Desktop/Firefox.desktop >> /tmp/first-boot.log
-/usr/bin/chown shokz:shokz /home/shokz/Desktop/Firefox.desktop >> /tmp/first-boot.log 2>&1
-/usr/bin/chmod 775 /home/shokz/Desktop/Firefox.desktop >> /tmp/first-boot.log 2>&1
+/usr/bin/cat /home/clouduser/Desktop/Firefox.desktop >> /tmp/first-boot.log
+/usr/bin/chown clouduser:clouduser /home/clouduser/Desktop/Firefox.desktop >> /tmp/first-boot.log 2>&1
+/usr/bin/chmod 775 /home/clouduser/Desktop/Firefox.desktop >> /tmp/first-boot.log 2>&1
 /bin/echo "***** Create Firefox Launcher *****" >> /tmp/first-boot.log
-/usr/bin/cat << EOF > /home/shokz/Desktop/Chrome.desktop
+/usr/bin/cat << EOF > /home/clouduser/Desktop/Chrome.desktop
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.0
@@ -64,11 +64,11 @@ Name[C]=Chrome
 Exec=google-chrome
 Name=Chrome
 EOF
-/usr/bin/cat /home/shokz/Desktop/Chrome.desktop >> /tmp/first-boot.log
-/usr/bin/chown shokz:shokz /home/shokz/Desktop/Chrome.desktop >> /tmp/first-boot.log 2>&1
-/usr/bin/chmod 775 /home/shokz/Desktop/Chrome.desktop >> /tmp/first-boot.log 2>&1
+/usr/bin/cat /home/clouduser/Desktop/Chrome.desktop >> /tmp/first-boot.log
+/usr/bin/chown clouduser:clouduser /home/clouduser/Desktop/Chrome.desktop >> /tmp/first-boot.log 2>&1
+/usr/bin/chmod 775 /home/clouduser/Desktop/Chrome.desktop >> /tmp/first-boot.log 2>&1
 /bin/echo "***** Create Terminal Launcher *****" >> /tmp/first-boot.log
-/usr/bin/cat << EOF > /home/shokz/Desktop/Terminal.desktop
+/usr/bin/cat << EOF > /home/clouduser/Desktop/Terminal.desktop
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.0
@@ -80,9 +80,9 @@ Name[C]=Terminal
 Exec=bash
 Name=Terminal
 EOF
-/usr/bin/cat /home/shokz/Desktop/Terminal.desktop >> /tmp/first-boot.log
-/usr/bin/chown shokz:shokz /home/shokz/Desktop/Terminal.desktop >> /tmp/first-boot.log 2>&1
-/usr/bin/chmod 775 /home/shokz/Desktop/Terminal.desktop >> /tmp/first-boot.log 2>&1
+/usr/bin/cat /home/clouduser/Desktop/Terminal.desktop >> /tmp/first-boot.log
+/usr/bin/chown clouduser:clouduser /home/clouduser/Desktop/Terminal.desktop >> /tmp/first-boot.log 2>&1
+/usr/bin/chmod 775 /home/clouduser/Desktop/Terminal.desktop >> /tmp/first-boot.log 2>&1
 /bin/echo "*****DONE*****" >> /tmp/first-boot.log
 /bin/echo "Script Stop  Time: "$(/usr/bin/date) >> /tmp/first-boot.log
 /usr/bin/wall "NOTICE: First Boot Setup Has Completed"

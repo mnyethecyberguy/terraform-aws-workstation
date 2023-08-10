@@ -146,7 +146,7 @@ output "RDP_address" {
 }
 
 output "RDP_UserName" {
-  value = "shokz"
+  value = "clouduser"
 }
 
 output "RDP_Password" {
