@@ -1,4 +1,4 @@
-# terraform-cloud-workstation
+# terraform-aws-workstation
 
 This terraform script deploys an Ubuntu Workstation with minimal additional software installed.  It enables SSH and RDP and uses security groups to restrict the administrative access to your current external IP address only to prevent it being wide open to the world.
 
