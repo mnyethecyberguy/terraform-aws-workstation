@@ -17,12 +17,12 @@ _NOTE: Don't break the law, as AWS Terms of Service still apply and this is not 
 Git clone the repository and provision the cloud workstation by running the following commands, one at a time:
 
 ```
-git clone https://github.com/mnyethecyberguy/terraform-cloud-workstation.git
+git clone https://github.com/mnyethecyberguy/terraform-aws-workstation.git
 ```
 and then
 
 ```
-cd terraform-cloud-workstation
+cd terraform-aws-workstation
 ```
 
 Next modify the `terraform.tfvars` contents with the settings that are appropriate for your AWS Account.
